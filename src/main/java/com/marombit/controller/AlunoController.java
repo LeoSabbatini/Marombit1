@@ -61,5 +61,18 @@ public class AlunoController {
         return ResponseEntity.notFound().build();
     }
 
-    
+    @GetMapping("/{id}/status")
+    public ResponseEntity<String> mtcStatus(@PathVariable Long id){
+        Optional<Aluno> alun = repository.findById(id);
+
+        if (!alun.isPresent()){
+            return ResponseEntity.notFound().build();
+        }
+
+        if (alun.get().getMtcAtiva() == true){
+            return ResponseEntity.ok("Matrícula_Ativa");
+        }
+
+        return ResponseEntity.ok("Matrícula_Inativa");
+    }
 }
