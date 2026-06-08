@@ -1,20 +1,12 @@
-# CineStar — Sistema de Avaliação de Filmes
-
-Sistema web desenvolvido para gerenciar avaliações de filmes, permitindo que usuários registrem opiniões, atribuam notas e acompanhem tendências de popularidade. A plataforma substitui métodos informais de recomendação, organizando as informações de forma centralizada e facilitando a descoberta de novos títulos.
-
----
-
+# Marombit
 ## Tecnologias Utilizadas
 
 ### Backend
 ![Java](https://img.shields.io/badge/Java-17+-orange?style=flat&logo=java)
-![Spring Boot](https://img.shields.io/badge/Spring_Boot-green?style=flat&logo=springboot)
-![Spring Web](https://img.shields.io/badge/Spring_Web-green?style=flat&logo=spring)
-
-### Frontend
-![Thymeleaf](https://img.shields.io/badge/Thymeleaf-green?style=flat&logo=thymeleaf)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-white?style=flat&logo=springboot)
+![Spring Web](https://img.shields.io/badge/Spring_Web-white?style=flat&logo=spring)
+![Lombok](https://img.shields.io/badge/Lombok-red?style=flat&logo=lombok)
+![YAML Badge](https://img.shields.io/badge/YAML-8?style=flat&logo=yaml&logoColor=white)
 
 ### Banco de Dados
 ![MySQL](https://img.shields.io/badge/MySQL-8+-4479A1?style=flat&logo=mysql&logoColor=white)
@@ -23,21 +15,21 @@ Sistema web desenvolvido para gerenciar avaliações de filmes, permitindo que u
 
 ## Funcionalidades
 
-- Autenticação com email e senha
-- Registro de avaliações e notas por usuário
-- Sistema de comentários em filmes
-- Sugestões personalizadas com base no perfil do usuário
-- Acompanhamento de tendências de popularidade
-- Descoberta e busca de novos títulos
-
+- CRUD completo alunos
+- Verificar status da matricula por aluno
 ---
+## Endpoints
 
-## Perfis de Acesso
+Todos os endpoints estão sob o prefixo `/alunos`.
 
-| Perfil | Permissões |
-|---|---|
-| ![Admin](https://img.shields.io/badge/Perfil-ADMIN-1A3C5E?style=flat) | Gerenciar filmes e usuários, moderar comentários |
-| ![Usuário](https://img.shields.io/badge/Perfil-USUÁRIO-2E75B6?style=flat) | Avaliar filmes, comentar e receber sugestões |
+| Método | Rota                  | Descrição | Status de retorno |
+|---|-----------------------|---|---|
+| `GET` | `/alunos`             | Listar todos os alunos | `200 OK` |
+| `GET` | `/alunos/{id}`        | Buscar aluno por ID | `200 OK` / `404 Not Found` |
+| `POST` | `/alunos`             | Cadastrar novo aluno | `201 Created` |
+| `PUT` | `/alunos/{id}`        | Atualizar dados do aluno | `200 OK` / `404 Not Found` |
+| `DELETE` | `/alunos/{id}`        | Remover aluno | `204 No Content` / `404 Not Found` |
+| `GET` | `/alunos/{id}/status` | Consultar status de matrícula | `200 OK` / `404 Not Found` |
 
 ---
 
@@ -48,13 +40,14 @@ Sistema web desenvolvido para gerenciar avaliações de filmes, permitindo que u
 ![Java](https://img.shields.io/badge/Java-17+-orange?style=flat&logo=java)
 ![Maven](https://img.shields.io/badge/Maven-3.8+-C71A36?style=flat&logo=apachemaven&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-8+-4479A1?style=flat&logo=mysql&logoColor=white)
+![YAML Badge](https://img.shields.io/badge/YAML-8?style=flat&logo=yaml&logoColor=white)
 
 ### Instalação
 
 1. Clone o repositório:
 ```bash
-git clone https://github.com/SENAI-Cotia/leo-e-amigo
-cd leo-e-amigo
+git clone https://github.com/LeoSabbatini/Marombit1
+cd Marombit1
 ```
 
 2. Configure o banco em `src/main/resources/application.properties`:
