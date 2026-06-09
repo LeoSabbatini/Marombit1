@@ -2,6 +2,7 @@ package com.marombit.controller;
 
 import com.marombit.model.Aluno;
 import com.marombit.repository.AlunoRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,13 +21,15 @@ public class AlunoController {
     public List<Aluno> listarTodos(){
         return repository.findAll();
     }
+
     @PostMapping
-    public ResponseEntity<Aluno> criarAluno(@RequestBody Aluno aluno){
+    public ResponseEntity<Aluno> criarAluno(@Valid @RequestBody Aluno aluno){
         var salvo = repository.save(aluno);
         return ResponseEntity.status(201).body(salvo);
     }
+
     @PutMapping("/{id}")
-    public ResponseEntity<Aluno> attAluno(@PathVariable Long id, @RequestBody Aluno aluno){
+    public ResponseEntity<Aluno> attAluno(@Valid @PathVariable Long id, @RequestBody Aluno aluno){
         Optional<Aluno> alunoExist = repository.findById(id);
         if (alunoExist.isPresent()){
             Aluno alunoAtt = alunoExist.get();
@@ -42,6 +45,7 @@ public class AlunoController {
 
         return ResponseEntity.notFound().build();
     }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Aluno> DelAluno (@PathVariable Long id){
         if (!repository.existsById(id)){
