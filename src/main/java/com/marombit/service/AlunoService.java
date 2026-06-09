@@ -1,5 +1,6 @@
 package com.marombit.service;
 
+import com.marombit.exception.AlunoNotFoundException;
 import com.marombit.exception.CpfJaCadastradoException;
 import com.marombit.model.Aluno;
 import com.marombit.repository.AlunoRepository;
@@ -41,11 +42,11 @@ public class AlunoService {
     }
 
     public Aluno listAlunoPorID(Long id){
-        return repository.findById(id).orElseThrow(() -> new RuntimeException("Usuário não encontrado."));
+        return repository.findById(id).orElseThrow(() -> new AlunoNotFoundException(id));
     }
 
     public void DelAluno (Long id){
-        repository.findById(id).orElseThrow(() -> new RuntimeException("Usuário não encontrado."));
+        repository.findById(id).orElseThrow(() -> new AlunoNotFoundException(id));
         repository.deleteById(id);
     }
 }
