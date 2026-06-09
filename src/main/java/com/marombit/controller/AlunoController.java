@@ -24,6 +24,9 @@ public class AlunoController {
 
     @PostMapping
     public ResponseEntity<Aluno> criarAluno(@Valid @RequestBody Aluno aluno){
+        if (repository.existsByCpf(aluno.getCpf())){
+            throw new
+        }
         var salvo = repository.save(aluno);
         return ResponseEntity.status(201).body(salvo);
     }
