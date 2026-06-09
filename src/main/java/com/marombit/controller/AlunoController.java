@@ -1,5 +1,6 @@
 package com.marombit.controller;
 
+import com.marombit.exception.CpfJaCadastradoException;
 import com.marombit.model.Aluno;
 import com.marombit.repository.AlunoRepository;
 import jakarta.validation.Valid;
@@ -25,7 +26,7 @@ public class AlunoController {
     @PostMapping
     public ResponseEntity<Aluno> criarAluno(@Valid @RequestBody Aluno aluno){
         if (repository.existsByCpf(aluno.getCpf())){
-            throw new
+            throw new CpfJaCadastradoException(aluno.getCpf());
         }
         var salvo = repository.save(aluno);
         return ResponseEntity.status(201).body(salvo);
