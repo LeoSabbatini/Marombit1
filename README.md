@@ -5,7 +5,6 @@
 ![Java](https://img.shields.io/badge/Java-17+-orange?style=flat&logo=java)
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-white?style=flat&logo=springboot)
 ![Spring Web](https://img.shields.io/badge/Spring_Web-white?style=flat&logo=spring)
-![Lombok](https://img.shields.io/badge/Lombok-red?style=flat&logo=lombok)
 ![YAML Badge](https://img.shields.io/badge/YAML-8?style=flat&logo=yaml&logoColor=white)
 
 ### Banco de Dados
