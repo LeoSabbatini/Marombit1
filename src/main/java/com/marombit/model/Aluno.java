@@ -2,6 +2,7 @@ package com.marombit.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,13 +25,13 @@ public class Aluno {
     @Column(unique = true)
     private String cpf;
 
-    @NotBlank(message = "Por favor, insira sua data de nascimento")
+    @NotNull(message = "Por favor, insira sua data de nascimento")
     private LocalDate bData;
 
-    @NotBlank(message = "A matrícula ativa é obrigatória")
+    @NotNull(message = "A matrícula ativa é obrigatória")
     private Boolean mtcAtiva;
 
-    @NotBlank(message = "Por favor, insira qual o plano")
+    @NotNull(message = "Por favor, insira qual o plano")
     @Enumerated(EnumType.STRING)
     private Plano plano;
 }
