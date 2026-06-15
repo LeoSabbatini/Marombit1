@@ -2,18 +2,16 @@ package com.marombit.service;
 
 import com.marombit.exception.AlunoNotFoundException;
 import com.marombit.exception.CpfJaCadastradoException;
+import com.marombit.exception.PlanoNotFoundException;
 import com.marombit.model.Aluno;
+import com.marombit.model.Plano;
 import com.marombit.repository.AlunoRepository;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
+
 @Service
 public class AlunoService {
 
@@ -48,5 +46,16 @@ public class AlunoService {
     public void DelAluno (Long id){
         repository.findById(id).orElseThrow(() -> new AlunoNotFoundException(id));
         repository.deleteById(id);
+    }
+
+    public Aluno atualizarPlano(Long id,String plano){
+        Aluno aluno = listAlunoPorID(id);
+        aluno.setPlano(validarPlano(plano));
+        return repository.save(aluno);
+    }
+
+    private Plano validarPlano(String plano){
+        return Arrays.stream(Plano.values()).filter( p -> p.name().equalsIgnoreCase(plano))
+                .findFirst().orElseThrow(()-> new PlanoNotFoundException(plano));
     }
 }

@@ -2,6 +2,7 @@ package com.marombit.controller;
 
 import com.marombit.exception.CpfJaCadastradoException;
 import com.marombit.model.Aluno;
+import com.marombit.model.PlanoRequestDTO;
 import com.marombit.repository.AlunoRepository;
 import com.marombit.service.AlunoService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -67,5 +68,10 @@ public class AlunoController {
         }
 
         return ResponseEntity.ok("Matrícula_Inativa");
+    }
+    @PatchMapping("/{id}/plano")
+    public ResponseEntity<Aluno> atualizarPlano(@PathVariable Long id, @RequestBody PlanoRequestDTO planoRequestDTO){
+        Aluno alunoAtualizado = alunoService.atualizarPlano(id, planoRequestDTO.plano());
+        return ResponseEntity.ok(alunoAtualizado);
     }
 }
